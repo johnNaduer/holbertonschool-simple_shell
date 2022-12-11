@@ -1,4 +1,8 @@
 #include "shell.h"
+/**
+ * free_argumentos - Function that frees entry arguments.
+ * @argumentos:     Arguments passed to the function.
+ */
 
 void free_argumentos(char **argumentos)
 {
