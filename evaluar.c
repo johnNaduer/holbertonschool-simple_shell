@@ -1,4 +1,9 @@
 #include "shell.h"
+/**
+ * evaluar - Function that evalues the first argument.
+ * @primer_argumento: Pointer to a string.
+ * Return:            The first argument in to an allocated memory space.
+ */
 
 char *evaluar(char *primer_argumento)
 {
