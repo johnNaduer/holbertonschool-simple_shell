@@ -1,0 +1,116 @@
+.TH hsh 1 "08 December 2022" "1.0" "Holberton simple_shell Manual"
+
+.SH NAME
+hsh \- Simple UNIX shell
+
+.SH SYNOPSIS
+.B ./hsh
+.I options are not available
+Part of a project at holberton school.
+
+.SH COPYRIGHT
+
+hsh is Copyright (C) 2022 by John Espino and Kevin Yeff
+
+
+.SH DESCRIPTION
+
+The (hsh) is the outermost layer of the operating system. It includes a programming language for controlling files and processes, as well as starting and controlling other programs. The hsh manages communication between the user and the operating system, requesting input, interpreting this input for the operating system, and handling any output results from the operating system.
+
+$PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+-Overview
+simple_shell is a shell emulator that reads lines from standard input, interprets them and, in general, executes them .
+
+ -Argument -list -processing
+hsh reads a entire line, and assumed that the first argument read from standard input is the command and following arguments are it's parameters.
+
+EXIT STATUS
+Exit status is the return of the last command executed on simple_shell, if the last command is successfull then return zero, otherwise return the macro defined EXIT_FAILURE.
+
+Environment
+This simple_shell only works with the ENV (enviroment) variable, that is an array of strings, wich contains the path to programs or files that shell uses, by convention these strings have the form 'name=value', are separated by ':'.
+
+FILES----
+
+
+
+.SH INVOCATION
+.br
+.\&
+.RS
+\&$ ./hsh
+
+A prompt will then appear and the user can begin entering and executing\
+commands by pressing 'enter'.
+
+Commands can also be entered and then piped into ./hsh.
+.br
+.\&
+\&$ echo "I have a big dog" | ./hsh
+
+.SH FEATURES
+.br
+.B Accepts piped input
+.br
+.B Accepts file as an argument
+.br
+.B Variable substitution
+.br
+-$? $$ $# $0-9
+.br
+.B Set local vars with FOO=bar
+.br
+-Local variables not passed with environment
+.br
+.B escape characters with -&&, || and ; -tilde expansion to home \
+directory from env
+
+
+.SH BUILTINS
+The following builtins are supported by hsh
+.br
+.br
+.B env
+.br
+-prints environment.Falls through to std env if more than 1 arg -quotes around\
+ arguments (accepting more stdin on mismatch in progress)
+.br
+.B exit
+-with status
+.br
+-exits the program
+.br
+.B cd
+.br
+- change directories
+.br
+.B setenv
+.br
+- sets environment variable
+.br
+.B unsetenv
+.br
+- unsets environment variable
+.br
+.B alias
+.br
+- creates alias variable
+.br
+.B unalias
+.br
+- removes alias variable
+
+.B help
+
+- Print help message of builtin command
+
+.SH SEE ALSO
+access(2), chdir(2), execve(2), _exit(2), exit(3), fflush(3), fork(2), free(3), isatty(3), getcwd(3), malloc(3), open(2), read(2), sh(1), signal(2), stat(2), wait(2), write(2)
+Sodash\fR takes basic functionality of the \fBsh\fR shell. This man page is based on the man page bash(1)
+
+.SH "SEE ALSO"
+.SH sh
+
+.SH "AUTHORS"
+John Espino and Kevin Yeff
