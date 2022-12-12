@@ -6,12 +6,12 @@
  * @av: input char
  * Return:                    Void.
  */
-void proceso_hijo(char *lectura, char **argumentos, char **av)
+int proceso_hijo(char *lectura, char **argumentos, char **av)
 {
 	/* declare a variable to store the child process ID */
 	pid_t p_pid;
 	/* declare a variable to store the status of the child process */
-	int status = 0;
+	int status;
 	/* create a child process */
 	p_pid = fork();
 
@@ -28,21 +28,17 @@ void proceso_hijo(char *lectura, char **argumentos, char **av)
 		}
 	}
 	/* if fork() failed */
-	else if (p_pid < 0)
+	if (p_pid < 0)
 	{
 		perror("process error");
 		free(argumentos);
 		free(lectura);
 	}
-	else
-	{
-		/* wait for the child process to finish */
-		waitpid(-1, &status, 0);
-		/* if the child process exited normally */
-		if (WIFEXITED(status))
-			/* get the exit status of the child process */
-			WEXITSTATUS(status);
-	}
+
+	wait(&status);
+
 	free_argumentos(argumentos);
 	free(lectura);
+	return (0);
+
 }
