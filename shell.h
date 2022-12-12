@@ -14,7 +14,7 @@ extern char **environ;
 
 char *cargar_texto();
 char **toukenizar_lectura(char *line, char *delims);
-void proceso_hijo(char *_line, char **_args, char **av);
+int proceso_hijo(char *_line, char **_args, char **av);
 void sig_handler(int signo);
 int contar_separador(char *line, char sep);
 int validar_espacios(char *input);
