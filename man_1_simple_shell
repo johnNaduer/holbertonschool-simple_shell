@@ -1,0 +1,155 @@
+.TH hsh 1 "08 December 2022" "1.0" "Holberton simple_shell Manual"
+
+.SH NAME
+hsh \- Simple UNIX shell
+
+.SH SYNOPSIS
+.B ./hsh
+.I options are not available
+Part of a project at holberton school.
+
+.SH COPYRIGHT
+
+hsh is Copyright (C) 2022 by John Espino and Kevin Espinoza
+
+
+.SH DESCRIPTION
+
+The (hsh) is the outermost layer of the operating system. It includes a programming language for controlling files and processes, as well as starting and controlling other programs. The hsh manages communication between the user and the operating system, requesting input, interpreting this input for the operating system, and handling any output results from the operating system.
+
+$PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+-Overview
+simple_shell is a shell emulator that reads lines from standard input, interprets them and, in general, executes them .
+
+ -Argument -list -processing
+hsh reads a entire line, and assumed that the first argument read from standard input is the command and following arguments are it's parameters.
+
+EXIT STATUS
+Exit status is the return of the last command executed on simple_shell, if the last command is successfull then return zero, otherwise return the macro defined EXIT_FAILURE.
+
+Environment
+This simple_shell only works with the ENV (enviroment) variable, that is an array of strings, wich contains the path to programs or files that shell uses, by convention these strings have the form 'name=value', are separated by ':'.
+
+
+.SH FILES
+
+.B
+AUTHORS - this file contains a list of contributors of this project.
+
+.B
+shell.c - Main function that calls functions in order to run a simple shell.
+
+.B
+cargarTexto.c - Function that stores input in to a buffer.
+
+.B
+tokenizarLectura.c - Function that tokenizes a string.
+
+.B
+localizarPath.c - Function that localizes the path.
+
+.B
+evaluar.c - Function that evalues the first argument.
+
+.B
+contar_separador.c - Function that search for separators and counts.
+
+.B
+signal_handler.c - function is a signal handler.
+
+.B
+freeArgumentos.c - Function that frees entry arguments.
+
+.B
+procesoHijo.c - Function that duplicates a process.
+
+.B
+environ.c - Functions that prints the environmental variables.
+
+.B
+README.md - file contains a brief description simple_shell.
+
+.SH USAGE
+
+.Pp
+EXAMPLE
+.PP
+.It
+root@c875c6417622:/holbertonschool-simple_shell# gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+.Pp
+
+.It
+#cisfun$ ls
+.PP
+README.md           evaluar.c         procesoHijo.c     tokenizarLectura.c
+cargarTexto.c       freeArgumentos.c  shell.c
+contar_separador.c  hsh               shell.h
+environ.c           localizarPath.c   signal_handler.c
+.B
+
+.SH
+.PP
+.in +n
+.EX
+
+root@c875c6417622:/holbertonschool-simple_shell# ./hsh
+#cisfun$ ls -la
+total 88
+drwxr-xr-x 3 root root  4096 Dec 12 01:14 .
+drwxr-xr-x 1 root root  4096 Dec 11 16:13 ..
+-rw-r--r-- 1 root root 12288 Dec 11 23:29 .evaluar.c.swp
+drwxr-xr-x 8 root root   201 Dec 12 01:06 .git
+-rw-r--r-- 1 root root    10 Dec 11 15:37 README.md
+-rw-r--r-- 1 root root   773 Dec 11 17:40 cargarTexto.c
+-rw-r--r-- 1 root root   365 Dec 11 17:40 contar_separador.c
+-rw-r--r-- 1 root root   208 Dec 11 22:08 environ.c
+-rw-r--r-- 1 root root  1314 Dec 11 22:11 evaluar.c
+-rw-r--r-- 1 root root   379 Dec 11 17:40 freeArgumentos.c
+-rwxr-xr-x 1 root root 18488 Dec 12 01:00 hsh
+-rw-r--r-- 1 root root   405 Dec 11 16:57 localizarPath.c
+-rw-r--r-- 1 root root   948 Dec 12 01:14 procesoHijo.c
+-rw-r--r-- 1 root root  1250 Dec 12 00:38 shell.c
+-rw-r--r-- 1 root root   554 Dec 12 01:06 shell.h
+-rw-r--r-- 1 root root   188 Dec 11 16:47 signal_handler.c
+-rw-r--r-- 1 root root  1053 Dec 12 01:06 tokenizarLectura.c
+
+
+.SH INVOCATION
+.br
+.\&
+.RS
+\&$ ./hsh
+
+A prompt will then appear and the user can begin entering and executing\
+commands by pressing 'enter'.
+
+Commands can also be entered and then piped into ./hsh.
+.br
+.\&
+\&$ echo "I have a big dog" | ./hsh
+
+.SH BUILTINS
+The following builtins are supported by hsh
+.br
+.br
+.B env
+.br
+-prints environment.Falls through to std env if more than 1 arg -quotes around\
+ arguments (accepting more stdin on mismatch in progress)
+.br
+.B exit
+-with status
+.br
+-exits the program
+.br
+
+.SH SEE ALSO
+execve(2), exit(3), fork(2), free(3), get(3), malloc(3), read(2), signal(2), stat(2), wait(2), write(2)
+hsh takes basic functionality of the \fBsh\fR shell. This man page is based on the man page bash(1)
+
+.SH "SEE ALSO"
+.SH sh
+
+.SH "AUTHORS"
+John Espino and Kevin Espinoza
